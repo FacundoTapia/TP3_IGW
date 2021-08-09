@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Clientes</title>
+    </h:head>
+    <h:body>
+        Mantenimiento de Clientes
+        <h:form>
+        <!--  int dni -->
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nombre:"/>
+                <h:inputText value="#{clientesMB.cliente.nombre}"
+                            label="Ingrese el nombre" 
+                            maxlength="20"  
+                            required="true" 
+                            requiredMessage="El nombre es obligatorio" 
+                            style="width:200px"/>
+
+                <h:outputLabel value="Apellido: "/>
+                <h:inputText value="#{clientesMB.cliente.apellido}"
+                            label="Ingrese el apellido" 
+                            maxlength="20"  
+                            required="true" 
+                            requiredMessage="El apellido es obligatorio" 
+                            style="width:200px"/>
+
+                <h:outputLabel value="Direccion: "/>
+                <h:inputText value="#{clientesMB.cliente.direccion}"
+                            label="Ingrese la direccion" 
+                            maxlength="50"  
+                            required="true" 
+                            requiredMessage="La direccion es obligatoria" 
+                            style="width:200px"/>
+                
+                <h:outputLabel value="Email: "/>
+                <h:inputText value="#{clientesMB.cliente.email}"
+                             required="true"
+                             requiredMessage="El email es obligatorio"
+                             style="width:200px"/>
+
+                <h:outputLabel value="Telefono: "/>
+                <h:inputText value="#{clientesMB.cliente.telefono}"
+                             required="true"
+                             requiredMessage="El telefono es obligatorio"
+                             style="width:200px"/>
+                
+                <h:outputLabel value="Tipo Documento: "/>
+                <h:selectOneMenu value="#{clientesMB.cliente.tipoDocumento}" style="width: 208px">
+                    <f:selectItems value="#{tipoDocumentoMB.tipoDocumentos}" var="tp"
+                                   itemValue="#{tp}" itemLabel="#{tp}"/>
+                </h:selectOneMenu>                
+
+                <h:outputLabel value="Numero Documento: "/>
+                <h:inputText value="#{clientesMB.cliente.dni}"
+                             required="true"
+                             requiredMessage="El dni es obligatorio"
+                             style="width:200px"/>             
+                
+                <h:commandButton value="Guardar" action="#{clientesMB.save()}"/>
+                <h:outputLabel value="#{clientesMB.mensaje}"/>
+            </h:panelGrid>
+        </h:form>        
+        
+        <h:form>
+            
+            <h:outputLabel value="Buscar apellido"/>
+            <h:inputText value="#{clientesMB.buscarApellido}"/>
+            
+            <h:dataTable value="#{clientesMB.likeApellido}" var="c">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.id}"></h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.nombre}"></h:outputText>
+                </h:column>                
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Apellido"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.apellido}"></h:outputText>
+                </h:column>                
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Direccion"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.direccion}"></h:outputText>
+                </h:column>                
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Email"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.email}"></h:outputText>
+                </h:column>                
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Telefono"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.telefono}"></h:outputText>
+                </h:column>                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Tipo Documento"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.tipoDocumento}"></h:outputText>
+                </h:column>                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Numero Documento"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{c.dni}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+        </h:form>        
+    </h:body>
+</html>
